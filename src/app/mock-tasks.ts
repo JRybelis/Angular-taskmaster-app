@@ -1,6 +1,6 @@
 import { Task } from './Task';
 
-export const TASKS: Task[] = [
+export const ArrayOfTasks: Task[] = [
   {
     id: 1,
     text: 'Doctors Appointment',
