@@ -1,6 +1,6 @@
-import { Task } from './Task';
+import { ITask } from './ITask';
 
-export const ArrayOfTasks: Task[] = [
+export const ArrayOfTasks: ITask[] = [
   {
     id: 1,
     text: 'Doctors Appointment',
