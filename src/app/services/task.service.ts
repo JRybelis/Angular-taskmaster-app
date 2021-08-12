@@ -13,7 +13,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class TaskService {
-  private apiUrl = 'https://localhost:44366/tasks';
+  private apiUrl = 'https://localhost:44366/Tasks';
 
   constructor(private http: HttpClient) {}
 
@@ -21,9 +21,13 @@ export class TaskService {
     return this.http.get<ITask[]>(this.apiUrl);
   }
 
-  deleteTask(task: ITask): Observable<ITask> {
+  addTask(task: ITask): Observable<ITask> {
+    return this.http.post<ITask>(this.apiUrl, task, httpOptions);
+  }
+
+  updateTask(task: ITask): Observable<ITask> {
     const url = `${this.apiUrl}/${task.id}`;
-    return this.http.delete<ITask>(url);
+    return this.http.put<ITask>(url, task, httpOptions);
   }
 
   updateTaskReminder(task: ITask): Observable<ITask> {
@@ -31,7 +35,8 @@ export class TaskService {
     return this.http.put<ITask>(url, task, httpOptions);
   }
 
-  addTask(task: ITask): Observable<ITask> {
-    return this.http.post<ITask>(this.apiUrl, task, httpOptions);
+  deleteTask(task: ITask): Observable<ITask> {
+    const url = `${this.apiUrl}/${task.id}`;
+    return this.http.delete<ITask>(url);
   }
 }
