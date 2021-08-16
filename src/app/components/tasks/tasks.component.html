@@ -1,8 +1,22 @@
-<app-add-task (onAddTask)="addTask($event)"></app-add-task>
+<app-add-task (onAddTask)="onAdd($event)"></app-add-task>
+<app-update-task
+  *ngIf="showUpdateTaskForm"
+  [task]="task"
+  (onUpdateTask)="onUpdate($event)"
+></app-update-task>
+<!-- aprasyti UpdateTask tasks.component.ts faile ... gal reik ngIf išmest čia? -->
 
 <app-task-item
   *ngFor="let task of tasks"
   [task]="task"
   (onDeleteTask)="deleteTask(task)"
   (onToggleReminder)="toggleReminder(task)"
-></app-task-item>
+>
+  <fa-icon [ngStyle]="{ color: 'brown' }" [icon]="faTimes"></fa-icon>
+  <!-- patikrint kaip click veikia, be emit onDelete niekur -->
+  <fa-icon
+    (click)="toggleUpdateTask(task)"
+    [ngStyle]="{ color: 'green' }"
+    [icon]="faPencilAlt"
+  ></fa-icon>
+</app-task-item>
