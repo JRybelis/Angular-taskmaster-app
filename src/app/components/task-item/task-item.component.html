@@ -1,3 +1,10 @@
+<app-update-task
+  *ngIf="showUpdateTaskForm"
+  [task]="task"
+  (onUpdateTask)="onUpdate($event)"
+></app-update-task>
+<!-- (onUpdateTask yra emitted iš update-task.ts Output kaip event) -->
+
 <div
   [ngClass]="{ reminder: task.reminder }"
   class="task"
@@ -11,5 +18,12 @@
       [icon]="faTimes"
     ></fa-icon>
   </h3>
-  <p>{{ task.day }}</p>
+  <p>
+    {{ task.day }}
+    <fa-icon
+      (click)="toggleUpdateTask(task)"
+      [ngStyle]="{ color: 'green' }"
+      [icon]="faPencilAlt"
+    ></fa-icon>
+  </p>
 </div>
