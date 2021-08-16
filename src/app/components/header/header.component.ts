@@ -10,13 +10,13 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   title: string = 'Angular Taskmaster';
-  showAddTask!: boolean;
+  showAddTaskForm!: boolean;
   subscription: Subscription = new Subscription();
 
   constructor(private uiService: UiService, private router: Router) {
     this.subscription = this.uiService
       .onToggle()
-      .subscribe((value) => (this.showAddTask = value));
+      .subscribe((value) => (this.showAddTaskForm = value));
   }
 
   ngOnInit(): void {}

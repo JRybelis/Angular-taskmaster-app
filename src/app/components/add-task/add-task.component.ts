@@ -13,13 +13,13 @@ export class AddTaskComponent implements OnInit {
   text!: string;
   day!: string;
   reminder: boolean = false;
-  showAddTask: boolean = false;
+  showAddTaskForm: boolean = false;
   subscription!: Subscription;
 
   constructor(private uiService: UiService) {
     this.subscription = this.uiService
       .onToggle()
-      .subscribe((value) => (this.showAddTask = value));
+      .subscribe((value) => (this.showAddTaskForm = value));
   }
 
   ngOnInit(): void {}
@@ -39,6 +39,6 @@ export class AddTaskComponent implements OnInit {
 
     this.text = '';
     this.day = '';
-    this.reminder = false;
+    this.reminder = false; //what to do with this when it replaces the placeholder immediately?
   }
 }
