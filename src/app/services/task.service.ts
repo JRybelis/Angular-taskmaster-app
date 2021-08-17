@@ -27,16 +27,16 @@ export class TaskService {
 
   updateTask(task: ITask): Observable<ITask> {
     const url = `${this.apiUrl}/${task.id}`;
-    return this.http.put<ITask>(url, task, httpOptions);
+    return this.http.put<ITask>(url, task, httpOptions); // paziuret, ar suvaiksto i backend.
   }
 
   updateTaskReminder(task: ITask): Observable<ITask> {
-    const url = `${this.apiUrl}/${task.id}`;
+    const url = `${this.apiUrl}/${task.id}`; // ar gali būt, kad ID nepriskiria?
     return this.http.put<ITask>(url, task, httpOptions);
   }
 
   deleteTask(task: ITask): Observable<ITask> {
     const url = `${this.apiUrl}/${task.id}`;
-    return this.http.delete<ITask>(url);
+    return this.http.delete<ITask>(url, httpOptions);
   }
 }
