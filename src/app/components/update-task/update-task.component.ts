@@ -11,6 +11,7 @@ import { UiService } from 'src/app/services/ui.service';
 export class UpdateTaskComponent implements OnInit {
   @Input() task!: ITask;
   @Output() onUpdateTask: EventEmitter<ITask> = new EventEmitter();
+  id?: number;
   text!: string;
   day!: string;
   reminder: boolean = false;
@@ -31,6 +32,7 @@ export class UpdateTaskComponent implements OnInit {
       return;
     }
     const updatedTask = {
+      id: this.task.id,
       text: this.text,
       day: this.day,
       reminder: this.reminder,
